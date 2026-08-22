@@ -1,0 +1,127 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    # Workflow files stored in the default location of `.github/workflows`
+    directory: "/"
+    schedule:
+      interval: "weekly"
+
+    # One grouped PR for minor + patch bumps; majors land individually.
+    groups:
+      github-actions:
+        update-types:
+          - "minor"
+          - "patch"
+
+  - package-ecosystem: "gradle"
+    # Mobile Wallet Adapter Android SDK
+    directory: "/android"
+    schedule:
+      interval: "weekly"
+
+    # One grouped PR for minor + patch bumps; majors land individually.
+    groups:
+      gradle-android:
+        update-types:
+          - "minor"
+          - "patch"
+
+  - package-ecosystem: "gradle"
+    # Mobile Wallet Adapter support for React Native
+    directory: "/js/packages/mobile-wallet-adapter-protocol/android"
+    schedule:
+      interval: "weekly"
+
+    # One grouped PR for minor + patch bumps; majors land individually.
+    groups:
+      gradle-js-packages-mobile-wallet-adapter-protocol-android:
+        update-types:
+          - "minor"
+          - "patch"
+
+  - package-ecosystem: "gradle"
+    # Mobile Wallet Adapter sample for React Native (Android)
+    directory: "/examples/example-react-native-app/android"
+    schedule:
+      interval: "weekly"
+
+    # One grouped PR for minor + patch bumps; majors land individually.
+    groups:
+      gradle-examples-example-react-native-app-android:
+        update-types:
+          - "minor"
+          - "patch"
+
+  - package-ecosystem: "gradle"
+    # Mobile Wallet Adapter sample for Kotlin
+    directory: "/examples/example-clientlib-ktx-app"
+    schedule:
+      interval: "weekly"
+
+    # One grouped PR for minor + patch bumps; majors land individually.
+    groups:
+      gradle-examples-example-clientlib-ktx-app:
+        update-types:
+          - "minor"
+          - "patch"
+
+  # Mobile Wallet Adapter JavaScript SDK and TypeScript examples
+  - cooldown:
+      default-days: 5
+    directories:
+      - "/examples/example-react-native-app"
+      - "/examples/example-react-native-wallet"
+      - "/examples/example-web-app"
+      - "/js"
+    groups:
+      babel:
+        patterns:
+          - "@babel/*"
+      eslint:
+        patterns:
+          - "@eslint/*"
+          - "@typescript-eslint/*"
+          - "eslint"
+          - "eslint-*"
+      prettier:
+        patterns:
+          - "prettier"
+      react:
+        patterns:
+          - "@types/react"
+          - "@types/react-test-renderer"
+          - "react"
+          - "react-dom"
+          - "react-test-renderer"
+      react-native:
+        patterns:
+          - "@react-native/*"
+          - "@react-native-community/*"
+          - "@react-native-vector-icons/*"
+          - "@types/react-native*"
+          - "react-native"
+          - "react-native-*"
+      axvn:
+        exclude-patterns:
+          - "@axvn/wallet-standard-*"
+        patterns:
+          - "@axvn/*"
+          - "@axvn-program/*"
+      testing:
+        patterns:
+          - "@jest/*"
+          - "@types/jest"
+          - "@vitest/*"
+          - "jest"
+          - "vitest"
+      typescript:
+        patterns:
+          - "@types/*"
+          - "typescript"
+      wallet-standard:
+        patterns:
+          - "@axvn/wallet-standard-*"
+          - "@wallet-standard/*"
+    package-ecosystem: "npm"
+    schedule:
+      interval: "weekly"
